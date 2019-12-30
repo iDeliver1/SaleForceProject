@@ -207,4 +207,10 @@ public class Utility_Libraries {
 		}
 		return null;
 	}
+	
+	public void Flush(ExtentTest logger, ExtentReports Extndreport)
+	{
+		Extndreport.endTest(logger);
+		Extndreport.flush();
+	}
 }

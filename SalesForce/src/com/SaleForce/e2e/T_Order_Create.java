@@ -94,30 +94,37 @@ public class T_Order_Create {
 			//Login
 			SaleForce_Login objLoginClass =  new SaleForce_Login(logger, driver, Extndreport);						
 			objLoginClass.Login(Username,Password);	
+			Utility_Object.Flush(logger, Extndreport);
 			
 			//Account Create
 			SaleForce_Accounts objAccountClass = new SaleForce_Accounts(logger, driver, Extndreport);
 			Account_Name = objAccountClass.Create_Accounts(AccountName,AccountNumber,AccountDescription);
+			Utility_Object.Flush(logger, Extndreport);
 			
 			//Contract Create
 			SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
 			Contract_Number = objContractClass.Create_Contracts(Account_Name,CustomerTitle,PriceBook,ContractMonth,OwnerExpiration,DescriptionArea);
+			Utility_Object.Flush(logger, Extndreport);
 			
 			//Product Create
 			SaleForce_Product objProductClass = new SaleForce_Product(logger, driver, Extndreport);
 			Product_Name_ = objProductClass.Create_Product(Product_Name, Price); 
+			Utility_Object.Flush(logger, Extndreport);
 			
 			//Order Create
 			SaleForce_Orders objOrderClass = new SaleForce_Orders(logger, driver, Extndreport);
 			Order_Number = objOrderClass.Create_Orders(Account_Name, Contract_Number, OrderDescription);  
+			Utility_Object.Flush(logger, Extndreport);
 			
 			//Add Product
 			SaleForce_AddProduct objAddProductClass = new SaleForce_AddProduct(logger, driver, Extndreport);
 			objAddProductClass.Product_Add(Product_Name_, Quantity);
+			Utility_Object.Flush(logger, Extndreport);
 			
 			//Logout
 			SaleForce_Logout objLogoutClass =  new SaleForce_Logout(logger, driver, Extndreport);	
 			objLogoutClass.Logout();
+			Utility_Object.Flush(logger, Extndreport);
 			
 			//Close
 			driver.close();
@@ -159,18 +166,22 @@ public class T_Order_Create {
 			//Login
 			SaleForce_Login objLoginClass =  new SaleForce_Login(logger, driver, Extndreport);						
 			objLoginClass.Login(Username,Password);	
+			Utility_Object.Flush(logger, Extndreport);
 			
 			//Order Update
 			SaleForce_OrderUpdate objOrderUpdate = new SaleForce_OrderUpdate(logger, driver, Extndreport);
 			objOrderUpdate.Order_Update(OrderNumber);
+			Utility_Object.Flush(logger, Extndreport);
 			
 			//Add Product
 			SaleForce_AddProduct objOrderClass = new SaleForce_AddProduct(logger, driver, Extndreport);
 			objOrderClass.Product_Add(ProductName, Quantity);
+			Utility_Object.Flush(logger, Extndreport);
 			
 			//Logout
 			SaleForce_Logout objLogoutClass =  new SaleForce_Logout(logger, driver, Extndreport);	
 			objLogoutClass.Logout();
+			Utility_Object.Flush(logger, Extndreport);
 			
 			//Close
 			driver.close();
