@@ -210,7 +210,6 @@ public class Utility_Libraries {
 	
 	public void Flush(ExtentTest logger, ExtentReports Extndreport)
 	{
-		Extndreport.endTest(logger);
 		Extndreport.flush();
 	}
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
   <test thread-count="5" name="Test">
-  	  <parameter name="Username" value="rpatestuser33@yopmail.com"/>
+  	  <parameter name="Username" value="rpatestuser30@yopmail.com"/>
 	  <parameter name="Password" value="iDeliver123"/>
 	  <parameter name="Browser" value="chrome"/>
 	  <parameter name="Url" value="https://login.salesforce.com/?locale=in"/>

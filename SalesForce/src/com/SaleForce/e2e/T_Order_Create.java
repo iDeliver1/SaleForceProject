@@ -1,9 +1,6 @@
 package com.SaleForce.e2e;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import org.openqa.selenium.WebDriver;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
@@ -20,7 +17,6 @@ import com.SaleForce.webelements.SaleForce_Product;
 import com.SaleForce.webelements.SaleForce_Orders;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class T_Order_Create {
 
@@ -125,13 +121,6 @@ public class T_Order_Create {
 			SaleForce_Logout objLogoutClass =  new SaleForce_Logout(logger, driver, Extndreport);	
 			objLogoutClass.Logout();
 			Utility_Object.Flush(logger, Extndreport);
-			
-			//Close
-			driver.close();
-			driver.quit();
-				//-----------------------------Reporter
-				Utility_Object.fReportpass("Browser Close", "Browser is successfully Close", logger, driver);
-				//------------------------------------
 		}
 	
 	@Parameters({ "Browser" , "Url" , "Username" , "Password"})
@@ -182,34 +171,16 @@ public class T_Order_Create {
 			SaleForce_Logout objLogoutClass =  new SaleForce_Logout(logger, driver, Extndreport);	
 			objLogoutClass.Logout();
 			Utility_Object.Flush(logger, Extndreport);
-			
+		}
+	
+	@AfterMethod	
+	public void Close() throws Throwable		
+		{
 			//Close
 			driver.close();
 			driver.quit();
 				//-----------------------------Reporter
 				Utility_Object.fReportpass("Browser Close", "Browser is successfully Close", logger, driver);
 				//------------------------------------
-		}
-	
-	@AfterMethod	
-	public void Flush(ITestResult result) throws Throwable		
-		{
-				if(result.getStatus()==ITestResult.FAILURE) 
-				{ 			
-					logger.log(LogStatus.FAIL,"Error :"+result.getThrowable());//+report.getClass()+" Test "+logger.getTest().statusMessage);//,ClassTest.takeScreenShot());			
-				}		
-				  if (result.getStatus() == ITestResult.FAILURE) {
-			            logger.log(LogStatus.FAIL, "Test '"+ testName+ "' Failed : Cause>>"+result.getThrowable(),logger.addScreenCapture(Utility_Libraries.fScreenReport(driver)));
-			            Excel_Libraries.fExcelReporter( ""+result.getThrowable()+"" , "Condition must be fullfill", "FAIL",""+new SimpleDateFormat("MM_dd_y_hhmmssa").format(new Date()));
-			            Extndreport.endTest(logger);
-			            Extndreport.flush();
-			            System.exit(1);
-				  	} else if (result.getStatus() == ITestResult.SKIP) {
-			        	logger.log(LogStatus.SKIP, "Test '"+ testName+ "' skipped : Cause>>"+ result.getThrowable(),logger.addScreenCapture(Utility_Libraries.fScreenReport(driver)));
-			        } else {
-			        	logger.log(LogStatus.PASS, "Test  '"+ testName+"'  passed");
-			        }	  
-				  Extndreport.endTest(logger);
-				  Extndreport.flush();
 		}
 }
