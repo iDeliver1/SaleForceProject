@@ -141,11 +141,13 @@ public class T_Order_Create_1 {
 			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 			logger 		= Extndreport.startTest(testName);
 		
+			//Data Load
 			String OrderDescription   = Excel_Libraries.fRead("OrderDescription", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Order");
 			
 			//Order Create
 			SaleForce_Orders objOrderClass = new SaleForce_Orders(logger, driver, Extndreport);
 			Order_Number = objOrderClass.Create_Orders(Account_Name, Contract_Number, OrderDescription);  
+			Excel_Libraries.fWrite(Order_Number, System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Order");
 		}
 
 	@Test(priority=7,enabled=true)
@@ -155,6 +157,7 @@ public class T_Order_Create_1 {
 			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 			logger 		= Extndreport.startTest(testName);
 		
+			//Data Load
 			String Quantity 		  = Excel_Libraries.fRead("Quantity", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Product");
 			
 			//Add Product
