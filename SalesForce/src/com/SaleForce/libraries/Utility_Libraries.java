@@ -60,8 +60,8 @@ public class Utility_Libraries {
 	{	
 	 	ExtentReports report1 = new ExtentReports(Report_Folder_path+"\\Test"+Utility_Libraries.fTimestamp()+".html");
 		report1.addSystemInfo("Java version", "JDK 8");
-		report1.addSystemInfo("Machine", "SourabhLaptop");
-		report1.config().documentTitle("Sourabh");
+		report1.addSystemInfo("Machine", "iDeliverLaptop");
+		report1.config().documentTitle("iDeliver");
 		report1.config().reportHeadline("Selenium");
 		report1.config().reportName("Automation");
 		return report1;
@@ -206,10 +206,5 @@ public class Utility_Libraries {
 			return Source;
 		}
 		return null;
-	}
-	
-	public void Flush(ExtentTest logger, ExtentReports Extndreport)
-	{
-		Extndreport.flush();
 	}
 }
