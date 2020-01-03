@@ -7,7 +7,7 @@
 	  <parameter name="Browser" value="chrome"/>
 	  <parameter name="Url" value="https://login.salesforce.com/?locale=in"/>
     <classes>
-      <class name="com.SaleForce.e2e.T_Order_Update"/>
+      <class name="com.SaleForce.e2e.T_Campaign"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -1,30 +1,16 @@
 package com.SaleForce.libraries;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import com.SaleForce.base.Driver_initializing;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
+public class Generic_Libraries extends Driver_initializing {
 
-public class Generic_Libraries {
-	
-	WebDriver driver;
-	ExtentTest logger;
-	ExtentReports Extndreport;
 	Utility_Libraries UtilityObject = new Utility_Libraries();
-	Utility_Libraries Utility_Object = new Utility_Libraries();
 	
-	public Generic_Libraries(ExtentTest logger,WebDriver driver,ExtentReports Extndreport) {
-
-		this.driver = driver;
-		this.logger = logger;
-		this.Extndreport = Extndreport;
-	}
-	
-	public void Click(WebElement Element) throws Throwable
+	public void Click(String Keyname, String Filename) throws Throwable
 	{
-		
+		WebElement Element = driver.findElement(Utility_Libraries.fGetPOMvalue("xpath", Keyname, Filename));
 		try {
 			if(Element.isEnabled())
 			{
@@ -36,10 +22,11 @@ public class Generic_Libraries {
 		}
 	}
 	
-	public boolean GetText(WebElement Element, String CompareType,String Val) throws Throwable
+	public boolean GetText(String Keyname,String Filename, String CompareType, String Val) throws Throwable
 	{
 		try 
 		{
+			WebElement Element = driver.findElement(Utility_Libraries.fGetPOMvalue("xpath", Keyname, Filename));
 			Element.isDisplayed();
 				switch (CompareType.toLowerCase())
 				{
@@ -59,12 +46,13 @@ public class Generic_Libraries {
 
 	}
 	
-	public void IsDisplay(WebElement Element,String Stepname, String StepDetails) throws Throwable
+	public void IsDisplay(String Keyname, String Filename, String Stepname, String StepDetails) throws Throwable
 	{
+		WebElement Element = driver.findElement(Utility_Libraries.fGetPOMvalue("xpath", Keyname, Filename));
 		try {
 			if(Element.isDisplayed())
 			{
-				Utility_Object.fReportpass(Stepname, StepDetails, logger, driver);
+				UtilityObject.fReportpass(Stepname, StepDetails, logger, driver);
 			}
 		} catch (Throwable e) {
 			System.out.println(e);
@@ -72,8 +60,9 @@ public class Generic_Libraries {
 		}
 	}
 	
-	public void SendKeys(WebElement Element,String Val) throws Throwable
+	public void SendKeys(String Keyname, String Filename, String Val) throws Throwable
 	{
+		WebElement Element = driver.findElement(Utility_Libraries.fGetPOMvalue("xpath", Keyname, Filename));
 		try {
 			if(Element.isDisplayed())
 			{
@@ -85,8 +74,9 @@ public class Generic_Libraries {
 		}
 	}
 	
-	public void Select(WebElement Element,String SelectType,String Val) throws Throwable
+	public void Select(String Keyname ,String Filename, String SelectType,String Val) throws Throwable
 	{
+		WebElement Element = driver.findElement(Utility_Libraries.fGetPOMvalue("xpath", Keyname, Filename));
 		try {
 			Select select_ = new Select(Element);
 			switch(SelectType.toLowerCase())
